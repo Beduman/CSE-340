@@ -58,6 +58,22 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+Util.buildDetailView = function(data) {
+  const detailView = `
+  <div class="detailView">
+      <img src="${data.inv_image}" alt="Image of ${data.inv_make} ${data.inv_model}">
+      <div class="vehicle-info">
+          <h2>${data.inv_make} ${data.inv_model}</h2>
+          <p><strong>Year:</strong> ${data.inv_year}</p>
+          <p><strong>Price:</strong> $${new Intl.NumberFormat('en-US').format(data.inv_price)}</p>
+          <p><strong>Mileage:</strong> ${new Intl.NumberFormat('en-US').format(data.inv_miles)} miles</p>
+          <p><strong>Color:</strong> ${data.inv_color}</p>
+          <p><strong>Description:</strong> ${data.inv_description}</p>
+      </div>
+  </div>
+  `;
+  return detailView;
+}
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

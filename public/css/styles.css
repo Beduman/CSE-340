@@ -86,6 +86,12 @@ nav ul li {
   grid-row: 2/3;
 }
 
+.detailView{
+  border: 5px solid black;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
 input:required:invalid, input:focus:invalid {
   /* insert your own styles for invalid form input */
  }
