@@ -1,0 +1,20 @@
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+<form action="/inv/add-inventory" method="post">
+    <!-- login form fields here -->
+    <%- messages() %>
+    <input type="text" name="inv_make" id="invMake" placeholder="Make" required value="<%= locals.inv_make %>">
+    <input type="text" name="inv_model" id="invModel" placeholder="Model" required value="<%= locals.inv_model %>">
+    <input type="number" name="inv_year" id="invYear" placeholder="Year" required value="<%= locals.inv_year %>">
+    <input type="text" name="inv_description" id="invDescription" placeholder="Description" required value="<%= locals.inv_description %>">
+    <input type="number" name="inv_price" id="invPrice" placeholder="Price" required value="<%= locals.inv_price %>">
+    <input type="number" name="inv_miles" id="invMiles" placeholder="Miles" required value="<%= locals.inv_miles %>">
+    <input type="text" name="inv_color" id="invColor" placeholder="Color" required value="<%= locals.inv_color %>">
+    <button type="submit">Add Vehicle</button>
+</form>

@@ -1,0 +1,14 @@
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+<form action="/inv/add-classification" method="post">
+    <!-- login form fields here -->
+    <%- messages() %>
+    <input type="text" name="classification_name" id="classificationName" placeholder="Classification Name" required value="<%= locals.classification_name %>">
+    <button type="submit">Add Classification</button>
+</form>
