@@ -82,7 +82,7 @@ invCont.buildManagement = async function (req, res, next) {
 * *************************************** */
 invCont.registerInventory = async function (req, res) {
   let nav = await utilities.getNav()
-  const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color } = req.body
+  const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body
 
   const regResult = await invModel.registerInventory(
     inv_make,
@@ -93,7 +93,8 @@ invCont.registerInventory = async function (req, res) {
     inv_thumbnail,
     inv_price,
     inv_miles,
-    inv_color
+    inv_color,
+    classification_id
   )
 
   try {

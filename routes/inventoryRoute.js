@@ -24,7 +24,7 @@ router.post("/add-classification",
 );
 
 //process add inventory
-router.post("/register",
+router.post("/add-inventory",
   utilities.handleErrors(invController.registerInventory)
 );
 
