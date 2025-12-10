@@ -17,6 +17,7 @@ const utilities = require("./utilities/")
 const session = require("express-session")
 const pool = require('./database/')
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 
 /* ***********************
  * Middleware
@@ -46,6 +47,16 @@ app.set("layout", "./layouts/layout") // not at views root
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+app.use(cookieParser())
+app.use(utilities.checkJWTToken)
+
+// Make res.locals available to all views
+app.use((req, res, next) => {
+  res.locals.loggedin = res.locals.loggedin || 0
+  res.locals.accountData = res.locals.accountData || {}
+  next()
+})
 
 /* ***********************
  * Routes
