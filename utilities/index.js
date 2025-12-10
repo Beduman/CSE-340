@@ -71,7 +71,9 @@ Util.buildDetailView = function(data) {
           <p><strong>Mileage:</strong> ${new Intl.NumberFormat('en-US').format(data.inv_miles)} miles</p>
           <p><strong>Color:</strong> ${data.inv_color}</p>
           <p><strong>Description:</strong> ${data.inv_description}</p>
+          <button onclick="addToComparison(${data.inv_id})">Add to Comparison View</button>
       </div>
+      
   </div>
   `;
   return detailView;

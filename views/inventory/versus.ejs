@@ -1,0 +1,15 @@
+<h1><%= title %></h1>
+<nav><%= nav %></nav>
+
+<% if (item1Html && item2Html) { %>
+  <div class="comparison-container">
+    <div class="item-card">
+      <%- item1Html %>
+    </div>
+    <div class="item-card">
+      <%- item2Html %>
+    </div>
+  </div>
+<% } else { %>
+  <p>Please select two vehicles.</p>
+<% } %>

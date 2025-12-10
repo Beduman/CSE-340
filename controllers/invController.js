@@ -163,6 +163,38 @@ invCont.registerClassification = async function (req, res) {
 }
 
 
+invCont.buildVersus = async function (req, res, next) {
+  console.log('buildVersus called with params:', req.params);
+  let nav = await utilities.getNav();
+  const item1Id = req.params.item1;
+  const item2Id = req.params.item2;
+  console.log('Item IDs:', item1Id, item2Id);
+  let item1 = null;
+  let item2 = null;
+  let item1Html = null;
+  let item2Html = null;
+  if (item1Id && item2Id) {
+    try {
+      item1 = await invModel.getInventoryByInventoryId(item1Id);
+      item2 = await invModel.getInventoryByInventoryId(item2Id);
+      console.log('Items fetched:', item1 ? 'item1 OK' : 'item1 NULL', item2 ? 'item2 OK' : 'item2 NULL');
+      if (item1) item1Html = utilities.buildDetailView(item1);
+      if (item2) item2Html = utilities.buildDetailView(item2);
+    } catch (error) {
+      console.error('Error in buildVersus:', error);
+      req.flash("notice", "Error loading comparison vehicles.");
+      return res.redirect("/inventory");
+    }
+  }
+  res.render("inventory/versus", {
+    title: "Compare Vehicles",
+    nav,
+    item1Html,
+    item2Html,
+    errors: null,
+  });
+}
+
 //error view
 
 invCont.buildError = async function (req, res, next) {

@@ -41,5 +41,11 @@ router.post("/add-inventory",
   utilities.handleErrors(invController.registerInventory)
 );
 
+router.get("/versus",
+  utilities.handleErrors(invController.buildVersus)
+);
+router.get("/versus/:item1/:item2",
+  utilities.handleErrors(invController.buildVersus)
+);
 
 module.exports = router;
